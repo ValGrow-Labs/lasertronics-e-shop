@@ -71,12 +71,15 @@ function Index() {
       </section>
 
       {/* Category tiles */}
-      <section className="container-page py-12 lg:py-16">
-        <h2 className="text-2xl font-extrabold sm:text-3xl">Shop by category</h2>
-        <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-          Five focused ranges, curated for Sri Lankan makers, technicians and households.
-        </p>
-        <div className="mt-7 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-5">
+      <section className="py-12 lg:py-16">
+        <div className="container-page">
+          <h2 className="text-2xl font-extrabold sm:text-3xl">Shop by category</h2>
+          <p className="mt-2 max-w-xl text-sm text-muted-foreground">
+            Five focused ranges, curated for Sri Lankan makers, technicians and households.
+          </p>
+        </div>
+        {/* Horizontally scrollable on mobile, grid on lg+ */}
+        <div className="mt-7 flex gap-3 overflow-x-auto px-4 pb-2 sm:px-6 lg:container-page lg:grid lg:grid-cols-5 lg:gap-4 lg:overflow-visible lg:px-0 lg:pb-0">
           {categories.map((c, i) => {
             const Icon = icons[i] ?? Cpu;
             return (
@@ -84,7 +87,7 @@ function Index() {
                 key={c.slug}
                 to="/category/$slug"
                 params={{ slug: c.slug }}
-                className="group flex flex-col rounded-xl border border-border bg-surface p-4 shadow-card transition-all hover:-translate-y-1 hover:border-primary hover:shadow-lift"
+                className="group flex min-w-[160px] flex-col rounded-xl border border-border bg-surface p-4 shadow-card transition-all hover:-translate-y-1 hover:border-primary hover:shadow-lift lg:min-w-0"
               >
                 <span className="grid size-11 place-items-center rounded-full bg-accent text-primary">
                   <Icon className="size-5" aria-hidden />
